@@ -6,6 +6,7 @@ const moment = require('moment')
 
 const app = express()
 
+app.set('port', (process.env.PORT || 8080));
 app.use(morgan('tiny'))
 app.set('view engine', 'pug')
 
@@ -32,6 +33,7 @@ app.get('/:date', (req, res) => {
     res.json(result)
 })
 
-app.listen(8080, () => {
-    console.log('Example app listening on port 8080')
-})
+app.listen(app.get('port'), () => {
+  console.log('Node app is running on port', app.get('port'));
+});
+
